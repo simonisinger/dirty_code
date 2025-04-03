@@ -11,85 +11,38 @@ class DirtyScreenOne extends StatelessWidget {
       body: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: Colors.redAccent),
-              margin: const EdgeInsets.all(4),
-              padding: const EdgeInsets.all(16.0),
-              child: const Row(
-                children: [
-                  Icon(Icons.bug_report),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Text(
-                    'Box #1',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: Colors.redAccent),
-              margin: const EdgeInsets.all(4),
-              padding: const EdgeInsets.all(16.0),
-              child: const Row(
-                children: [
-                  Icon(Icons.bug_report),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Text(
-                    'Box #2',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: Colors.redAccent),
-              margin: const EdgeInsets.all(4),
-              padding: const EdgeInsets.all(16.0),
-              child: const Row(
-                children: [
-                  Icon(Icons.bug_report),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Text(
-                    'Box #3',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: Colors.redAccent),
-              margin: const EdgeInsets.all(4),
-              padding: const EdgeInsets.all(16.0),
-              child: const Row(
-                children: [
-                  Icon(Icons.bug_report),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Text(
-                    'Box #4',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  )
-                ],
-              ),
-            )
-          ],
+          children: List.generate(4, (i) => i+1)
+              .map((int number) => CleanBoxOne(number: number))
+              .toList(),
         ),
+      ),
+    );
+  }
+}
+
+class CleanBoxOne extends StatelessWidget {
+  final int number;
+  const CleanBoxOne({super.key, required this.number});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.redAccent),
+      margin: const EdgeInsets.all(4),
+      padding: const EdgeInsets.all(16.0),
+      child: Row(
+        children: [
+          const Icon(Icons.bug_report),
+          const SizedBox(
+            width: 8,
+          ),
+          Text(
+            'Box #$number',
+            style: const TextStyle(fontSize: 20, color: Colors.white),
+          )
+        ],
       ),
     );
   }
